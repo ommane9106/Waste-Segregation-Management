@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Waste Segregation Awareness Campaign</title>
+  <style>
+    body {
+      background-color: #0d1117;
+      color: #c9d1d9;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #161b22;
+      padding: 1.5rem;
+      text-align: center;
+      border-bottom: 2px solid #238636;
+    }
+
+    header h1 {
+      color: #79c0ff;
+      margin-bottom: 0.4rem;
+    }
+
+    header p {
+      color: #9fbfe6;
+      font-size: 1rem;
+    }
+
+    /* Navigation bar */
+    nav {
+      background: #0f1624;
+      border-bottom: 1px solid #30363d;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      padding: 0.8rem 0;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: #b8c3cc;
+      text-decoration: none;
+      padding: 0.6rem 1rem;
+      font-weight: 600;
+      border-radius: 6px;
+      transition: background 0.3s;
+    }
+
+    nav a:hover, nav a.active {
+      background: #238636;
+      color: #fff;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+
+    /* Section Title with green bar */
+    .section-title {
+      position: relative;
+      padding-left: 10px;
+      border-left: 5px solid #238636;
+      margin-bottom: 1rem;
+      color: #58a6ff;
+    }
+
+    .section-title::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 5px;
+      height: 100%;
+      background: #238636;
+      border-radius: 3px;
+    }
+
+    /* Card Layout */
+    .cards {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1.2rem;
+    }
+
+    .card {
+      flex: 1 1 30%;
+      background: #0f1624;
+      border: 1px solid #30363d;
+      border-radius: 10px;
+      text-align: center;
+      padding: 1.2rem;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      background: #111b2d;
+    }
+
+    .card img {
+      width: 90px;
+      margin-bottom: 0.8rem;
+      border-radius: 8px;
+    }
+
+    .card h3 {
+      color: #79c0ff;
+      margin-bottom: 0.4rem;
+    }
+
+    .card p {
+      color: #9aa6b2;
+      font-size: 0.95rem;
+    }
+
+    hr {
+      border: none;
+      height: 1px;
+      background: #22272b;
+      margin: 1.8rem 0;
+    }
+
+    /* Contact & Quiz Section */
+    #contact {
+      background: linear-gradient(180deg, #0b0d10, #0d1117);
+      padding: 2rem 0;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    @media (max-width: 900px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    #contactForm {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    #contactForm input, #contactForm textarea {
+      width: 100%;
+      padding: 0.7rem;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      background: #0f1624;
+      color: #cfe9ff;
+    }
+
+    #contactForm button {
+      background: #238636;
+      color: white;
+      padding: 0.6rem 0.9rem;
+      border: none;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    #contactForm button:hover {
+      background: #2ea043;
+    }
+
+    .quick-widget {
+      background: linear-gradient(180deg, rgba(25,30,36,0.95), rgba(18,22,28,0.95));
+      border: 1px solid #30363d;
+      padding: 1rem;
+      border-radius: 10px;
+      color: #c9d1d9;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.5);
+    }
+
+    .quiz-btn {
+      background: #1f6feb;
+      color: white;
+      padding: 0.5rem;
+      border-radius: 8px;
+      border: none;
+      font-weight: 700;
+      cursor: pointer;
+      margin-right: 0.3rem;
+      margin-top: 0.3rem;
+    }
+
+    .quiz-btn:hover { background: #238636; }
+
+    footer {
+      background: #161b22;
+      color: #9fbfe6;
+      text-align: center;
+      padding: 20px;
+      border-top: 2px solid #238636;
+    }
+
+    footer h4 {
+      color: #58a6ff;
+      margin-bottom: 0.3rem;
+    }
+
+    footer p {
+      margin: 0.3rem 0;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Waste Segregation Awareness Campaign</h1>
+    <p>Together, let's make our community clean and green!</p>
+  </header>
+
+  <nav>
+    <a href="index.html" class="active">Home</a>
+    <a href="importance.html">Why It Matters</a>
+    <a href="how-to.html">How to Segregate</a>
+    <a href="quiz.html">Full Quiz</a>
+    <a href="team.html">Our Small Team</a>
+  </nav>
+
+  <div class="container">
+    <section>
+      <h2 class="section-title">Why Waste Segregation Matters</h2>
+        <p>
+Waste segregation is one of the <strong><em>most crucial steps</em></strong> we can take to <strong><em>protect our environment</em></strong> and create a <strong><em>healthier, more sustainable future</em></strong>. By properly separating <strong><em>dry waste</em></strong>, <strong><em>wet waste</em></strong>, and <strong><em>hazardous waste</em></strong>, we ensure that each type of material is handled in the <strong><em>most suitable way</em></strong>, reducing pollution and conserving natural resources. <strong><em>Dry waste</em></strong>, such as paper, plastics, metals, and glass, can be <strong><em>recycled</em></strong> and transformed into new products, decreasing the demand for raw materials. <strong><em>Wet waste</em></strong>, including kitchen scraps and organic matter, can be <strong><em>composted</em></strong> to produce <strong><em>nutrient-rich soil</em></strong>, enriching gardens and farms while reducing landfill load. <strong><em>Hazardous waste</em></strong>, like batteries, chemicals, and electronic devices, requires <strong><em>careful handling</em></strong> to prevent contamination of soil, water, and air, <strong><em>protecting both human health and the environment</em></strong>.
+
+
+</p>
+
+
+      <div class="cards">
+        <div class="card">
+          <img src="https://cdn-icons-png.flaticon.com/512/1049/1049290.png" alt="Environment Icon">
+          <h3>Protects Environment</h3>
+          <p>Reduces harmful waste that ends up polluting our soil and water.</p>
+        </div>
+        <div class="card">
+          <img src="https://cdn-icons-png.flaticon.com/512/3062/3062634.png" alt="Recycling Icon">
+          <h3>Encourages Recycling</h3>
+          <p>Makes it easier to convert materials into reusable products.</p>
+        </div>
+        <div class="card">
+          <img src="https://cdn-icons-png.flaticon.com/512/1995/1995574.png" alt="Health Icon">
+          <h3>Improves Public Health</h3>
+          <p>Reduces disease spread from improper waste disposal.</p>
+        </div>
+      </div><!-- Quiz / Tips Section -->
+<section id="tips" style="background-color:#161b22; color:#c9d1d9; padding:1.5rem; text-align:center; border-radius:8px; margin:2rem 0;">
+  <h3 style="color:#58a6ff;">💡 Quick Tip / Quiz</h3>
+  <p>Did you know? <strong>Fruit peels belong to <em>wet waste</em>!</strong> Segregating correctly helps composting and reduces landfill load.</p>
+</section>
+
+
+      <hr>
+
+      <h2 class="section-title">Types of Waste</h2>
+      <p>
+Proper waste management begins with the ability to <strong><em>identify and separate waste</em></strong> into its correct categories. By distinguishing between <strong><em>dry, wet, and hazardous waste</em></strong>, we not only make recycling easier but also significantly <strong><em>reduce environmental pollution</em></strong>. <strong><em>Dry waste</em></strong>, such as paper, plastics, glass, and metals, should be kept <strong><em>clean and dry</em></strong> to ensure it can be <strong><em>recycled efficiently</em></strong>. <strong><em>Wet waste</em></strong>, including kitchen scraps and organic matter, can be <strong><em>composted</em></strong> to enrich soil and reduce landfill accumulation. Meanwhile, <strong><em>hazardous waste</em></strong>, like batteries, chemicals, and electronic items, must be handled with <strong><em>extreme care</em></strong> and taken to <strong><em>authorized disposal centers</em></strong> to avoid <strong><em>health hazards and environmental contamination</em></strong>. By making a conscious effort to <strong><em>sort our waste daily</em></strong>, each individual contributes to <strong><em>creating a cleaner, safer, and more sustainable community</em></strong> for all living beings.
+</p>
+
+      <div class="cards">
+        <div class="card">
+          <img src="https://cdn-icons-png.flaticon.com/512/7297/7297773.png" alt="Dry Waste">
+          <h3>Dry Waste</h3>
+          <p>Paper, plastic, glass, and metal. Keep them clean and dry before disposal.</p>
+        </div>
+        <div class="card">
+          <img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXf6qI3zfge3ZildeOw6tLjGQtLwfHGZP320l8f8VH_0p9jNxz4PjYQ2eYWifT-DnCJ96JILPFUDCdP-PhKiYpip6qx8JMoY5NjoAf4fbji4MPlpellg0I7TG5e6cnh7k6cr_mOxQA?key=ifdtTj3x7c-bz5e0CsbjFQ2t" alt="Wet Waste">
+          <h3>Wet Waste</h3>
+          <p>Kitchen waste, fruit peels, leftover food — perfect for composting.</p>
+        </div>
+        <div class="card">
+          <img src="https://cdn-icons-png.flaticon.com/512/3287/3287330.png" alt="Hazardous Waste">
+          <h3>Hazardous Waste</h3>
+          <p>Batteries, chemicals, and e-waste — take to authorized collection centers.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Contact + Quiz -->
+  <section id="contact">
+    <div class="container">
+      <h2 class="section-title">Contact Us</h2>
+      <p>Want to volunteer or learn more? Send us a message below or test your knowledge in our quick quiz!</p>
+
+      <div class="contact-grid">
+        <div>
+          <form id="contactForm" onsubmit="handleContact(event)">
+            <input type="text" id="cname" name="name" placeholder="Your Name" required />
+            <input type="email" id="cemail" name="email" placeholder="Your Email" required />
+            <textarea id="cmessage" name="message" rows="4" placeholder="Your Message (optional)"></textarea>
+            <button type="submit">Submit</button>
+          </form>
+          <p class="thank-you" id="ty" style="display:none;">✅ Thank you for your message!</p>
+        </div>
+
+        <div class="quick-widget">
+          <h4>Quick Awareness Quiz</h4>
+          <p>Which type of waste are fruit peels?</p>
+          <button class="quiz-btn" onclick="alert('✅ Correct! Fruit peels are wet waste.')">Wet Waste</button>
+          <button class="quiz-btn" onclick="alert('❌ Incorrect! Fruit peels are wet waste.')">Dry Waste</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="about-developers" tabindex="0" aria-haspopup="true" aria-expanded="false" role="button">
+      About Developers
+      <div class="developers-list" role="tooltip" aria-label="List of developers and roles">
+        <p><strong>Shubham Mali</strong> - Frontend Developer</p> 
+        <p><strong>Om Mane</strong> - Backend Developer</p> 
+        <p><strong>Anjan Naik</strong> - UI/UX Designer</p> 
+        <p><strong>Vinit Paratane</strong> - Project Manager</p> 
+      </div>
+    </div>
+
+    <div class="about">
+      <p>Developed by Thalaiva Green Initiative. We strive to deliver the best experience.</p>
+    </div>
+
+    <div class="social-media">
+      <a href="https://instagram.com/yourprofile" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="https://facebook.com/yourprofile" target="_blank" rel="noopener noreferrer">Facebook</a>
+      <a href="https://twitter.com/yourprofile" target="_blank" rel="noopener noreferrer">Twitter</a>
+    </div>
+
+    <div class="legal-links">
+      <a href="/privacy-policy.html">Privacy Policy</a> |
+      <a href="/terms.html">Terms & Conditions</a> |
+      <a href="/disclaimer.html">Disclaimer</a>
+    </div>
+
+    <div class="contact-info">
+      <p>Email: contact@superstarcoolie.com</p>
+      <p>Phone: +91 9637419475</p>
+    </div>
+
+    <div class="copyright">
+      <p>© 2025 Thalaiva Green Initiative. All rights reserved. Since: 1955 (Diamond Jubilee)</p>
+    </div>
+  </footer>
+
+  <!-- Contact Form JS -->
+  <script>
+  async function handleContact(e) {
+    e.preventDefault();
+    const name = document.getElementById("cname").value;
+    const email = document.getElementById("cemail").value;
+    const message = document.getElementById("cmessage").value;
+
+    try {
+      const response = await fetch("/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, message })
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        document.getElementById("contactForm").style.display = "none";
+        document.getElementById("ty").style.display = "block";
+        setTimeout(() => {
+          document.getElementById("contactForm").reset();
+          document.getElementById("contactForm").style.display = "block";
+          document.getElementById("ty").style.display = "none";
+        }, 4000);
+      } else {
+        alert("❌ Error: " + (result.error || "Failed to send message."));
+      }
+    } catch (err) {
+      alert("❌ Error connecting to server.");
+      console.error(err);
+    }
+  }
+  </script>
+
+</body>
+</html>

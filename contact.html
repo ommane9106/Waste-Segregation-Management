@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Contact form specific styles */
+    section#contact {
+      max-width: 600px;
+      margin: 2rem auto;
+      background: #161b22;
+      padding: 2rem 2.5rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 15px rgba(21, 101, 192, 0.2);
+      border: 1px solid #30363d;
+      color: #c9d1d9;
+    }
+
+    section#contact h2 {
+      color: #58a6ff;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    input, textarea {
+      background-color: #0d1117;
+      border: 1.5px solid #30363d;
+      padding: 0.8rem 1rem;
+      border-radius: 8px;
+      color: #c9d1d9;
+      font-size: 1rem;
+      resize: vertical;
+      transition: border-color 0.3s ease;
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: #58a6ff;
+    }
+
+    button {
+      background-color: #238636;
+      border: none;
+      color: white;
+      font-weight: 700;
+      padding: 0.9rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #2ea043;
+    }
+
+    .thank-you {
+      margin-top: 1rem;
+      text-align: center;
+      font-weight: 600;
+      color: #3fb950;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Waste Segregation Awareness Campaign</h1>
+    <p>Together, let's make our community clean and green!</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="importance.html">Why It Matters</a>
+    <a href="how-to.html">How to Segregate</a>
+    <a href="quiz.html">Quiz</a>
+    <a href="contact.html" class="active">Contact</a>
+  </nav>
+
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p style="text-align:center;">Want to volunteer or learn more? Send us a message below!</p>
+    <form id="contactForm" onsubmit="handleSubmit(event)">
+      <input type="text" id="name" placeholder="Your Name" required />
+      <input type="email" id="email" placeholder="Your Email" required />
+      <textarea id="message" rows="5" placeholder="Your Message (optional)"></textarea>
+      <button type="submit">Submit</button>
+    </form>
+    <p class="thank-you" id="thankYouMsg" style="display:none;">Thank you for your message! We’ll get back to you soon.</p>
+  </section>
+
+  <footer>
+    <p>© 2025 Waste Segregation Awareness Project | Built for CEP by Students of B.Tech (AI & DS)</p>
+  </footer>
+
+  <script>
+    function handleSubmit(event) {
+      event.preventDefault();
+
+      // Optionally you can do more validation here
+
+      const form = document.getElementById('contactForm');
+      form.style.display = 'none';  // hide form
+      const thankYouMsg = document.getElementById('thankYouMsg');
+      thankYouMsg.style.display = 'block';  // show thank you message
+
+      // Reset form after 5 seconds and show form again
+      setTimeout(() => {
+        form.reset();
+        form.style.display = 'flex';
+        thankYouMsg.style.display = 'none';
+      }, 5000);
+    }
+  </script>
+
+</body>
+</html>

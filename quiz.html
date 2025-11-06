@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Waste Segregation Quiz</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Additional quiz-specific styles */
+    .quiz-container {
+      max-width: 600px;
+      margin: 2rem auto;
+      background: #161b22;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 15px rgba(0, 255, 255, 0.1);
+      border: 1px solid #30363d;
+      color: #c9d1d9;
+      text-align: center;
+    }
+
+    .quiz-question {
+      font-size: 1.3rem;
+      margin-bottom: 1.5rem;
+      color: #58a6ff;
+    }
+
+    .quiz-options button {
+      margin: 0.5rem;
+      width: 45%;
+      background-color: #238636;
+      border: none;
+      color: white;
+      padding: 0.8rem 1rem;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .quiz-options button:hover {
+      background-color: #2ea043;
+    }
+
+    #result {
+      margin-top: 1.5rem;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    #restart-btn {
+      margin-top: 1.5rem;
+      background-color: #1f6feb;
+      width: auto;
+      padding: 0.8rem 2rem;
+    }
+    #restart-btn:hover {
+      background-color: #58a6ff;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Waste Segregation Awareness Campaign</h1>
+    <p>Together, let's make our community clean and green!</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="importance.html">Why It Matters</a>
+    <a href="how-to.html">How to Segregate</a>
+    <a href="quiz.html" class="active">Quiz</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <section class="quiz-container">
+    <h2>Quick Awareness Quiz</h2>
+    <p>Test your knowledge about waste segregation!</p>
+    <div id="quiz-content">
+      <p class="quiz-question" id="question"></p>
+      <div class="quiz-options" id="options"></div>
+      <p id="result"></p>
+    </div>
+    <button id="restart-btn" style="display:none;" onclick="restartQuiz()">Restart Quiz</button>
+  </section>
+
+  <footer>
+    <p>© 2025 Waste Segregation Awareness Project | Built for CEP by Students of B.Tech (AI & DS)</p>
+  </footer>
+
+  <script>
+    const quizData = [
+      {
+        question: "Which type of waste are fruit peels?",
+        options: ["Dry Waste", "Wet Waste", "Hazardous Waste"],
+        answer: "Wet Waste"
+      },
+      {
+        question: "Where should batteries be disposed?",
+        options: ["Dry Waste", "Hazardous Waste", "Wet Waste"],
+        answer: "Hazardous Waste"
+      },
+      {
+        question: "Plastic bottles belong to which category?",
+        options: ["Wet Waste", "Dry Waste", "Hazardous Waste"],
+        answer: "Dry Waste"
+      },
+      {
+        question: "Why is waste segregation important?",
+        options: [
+          "Reduces pollution",
+          "Increases landfill waste",
+          "Makes waste management harder"
+        ],
+        answer: "Reduces pollution"
+      }
+    ];
+
+    let currentQuestion = 0;
+
+    const questionEl = document.getElementById('question');
+    const optionsEl = document.getElementById('options');
+    const resultEl = document.getElementById('result');
+    const restartBtn = document.getElementById('restart-btn');
+
+    function loadQuestion() {
+      resultEl.textContent = "";
+      const q = quizData[currentQuestion];
+      questionEl.textContent = q.question;
+      optionsEl.innerHTML = '';
+
+      q.options.forEach(option => {
+        const btn = document.createElement('button');
+        btn.textContent = option;
+        btn.onclick = () => checkAnswer(option);
+        optionsEl.appendChild(btn);
+      });
+    }
+
+    function checkAnswer(selected) {
+      const correct = quizData[currentQuestion].answer;
+      if (selected === correct) {
+        resultEl.textContent = "✅ Correct!";
+        resultEl.style.color = "#3fb950"; // green
+      } else {
+        resultEl.textContent = `❌ Oops! The correct answer is "${correct}".`;
+        resultEl.style.color = "#f85149"; // red
+      }
+
+      // Disable all buttons
+      Array.from(optionsEl.children).forEach(btn => btn.disabled = true);
+
+      // Show next question after delay or show restart if last
+      setTimeout(() => {
+        currentQuestion++;
+        if (currentQuestion < quizData.length) {
+          loadQuestion();
+        } else {
+          showRestart();
+        }
+      }, 2000);
+    }
+
+    function showRestart() {
+      questionEl.textContent = "Quiz Completed! 🎉";
+      optionsEl.innerHTML = '';
+      resultEl.textContent = "";
+      restartBtn.style.display = "inline-block";
+    }
+
+    function restartQuiz() {
+      currentQuestion = 0;
+      restartBtn.style.display = "none";
+      loadQuestion();
+    }
+
+    // Initialize quiz on page load
+    loadQuestion();
+  </script>
+
+</body>
+</html>
